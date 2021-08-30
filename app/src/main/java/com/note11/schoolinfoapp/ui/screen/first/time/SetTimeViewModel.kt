@@ -20,6 +20,5 @@ class SetTimeViewModel : ViewModel() {
             firstTime = listOf(firstTimeHour.value!!.toInt(), firstTimeMinute.value!!.toInt()),
             classBeforeLunch = classBeforeLunch.value!!
         )
-
     }
 }

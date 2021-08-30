@@ -28,7 +28,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             val user = DataUtil(this@MainActivity).getUserInfoOnce()!!
             viewModel.getAllData(user)
         }
-
     }
 
     private fun initActivity() {

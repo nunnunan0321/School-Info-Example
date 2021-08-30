@@ -24,6 +24,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
 
     private fun initActivity() = let { act ->
         receivedInfo = intent.getParcelableExtra("schoolInfo")!!
+        // todo : question 17. 전 액티비티에서 가져온 데이터를 이용해 반 데이터를 여기서 불러오려 합니다.
         viewModel.getClassList(receivedInfo)
 
         val gradeAdapter = HintSpinnerAdapter(act, "학년")
@@ -33,7 +34,10 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
             spnSelectGrade.adapter = gradeAdapter
             spnSelectClass.adapter = classAdapter
 
-            btnSelectNext.setOnClickListener { nextStep() }
+            btnSelectNext.setOnClickListener {
+                // todo : question 18. 여기에 들어갈 함수로 적절한 것은?
+                nextStep()
+            }
         }
 
         viewModel.run {
