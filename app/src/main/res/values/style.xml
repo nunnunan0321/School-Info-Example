@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HEditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/hsans_r</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DefaultEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTint">@color/white</item>
+        <item name="fontFamily">@font/hsans_r</item>
+        <item name="android:textColorHint">@color/gray_300</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

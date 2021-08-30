@@ -1,0 +1,79 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.note11.schoolinfoapp.ui.screen.first.search.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/txt_search_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/edt_search_school"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hsans_b"
+                android:gravity="center"
+                android:text="어떤 학교를 다니고 있나요?"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="학급 시간표와 급식 메뉴를 조회하기 위해 필요해요!\n학교 이름을 입력하고, 검색 결과가 표시되면, 선택해주세요!"
+                android:textColor="@color/gray_500"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edt_search_school"
+            style="@style/DefaultEditTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginVertical="12dp"
+            android:background="@drawable/round_16_edit"
+            android:elevation="2dp"
+            android:hint="학교명을 입력하세요"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp"
+            android:text="@={viewModel.searchQuery}"
+            app:layout_constraintBottom_toTopOf="@id/rcv_search_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_search_help" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_search_list"
+            bindSearchItems="@{viewModel.searchList}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_search_school"
+            tools:listitem="@layout/item_search" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

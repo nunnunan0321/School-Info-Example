@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="48dp">
+
+        <LinearLayout
+            android:id="@+id/txt_welcome_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/txt_welcome_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hsans_r"
+                android:text="급식과 시간표를 빠르게!"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hsans_b"
+                android:text="ClassLunchr에 오신 것을 환영합니다☺️"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_welcome_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="SSF 나눔축제 선린인터넷고등학교 EDCAN\n나만의 급식 &amp; 시간표 앱 만들기 클래스에서 제작한 어플리케이션입니다:)\n\n본 어플리케이션은 급식과 시간표를 PUSH 알림으로 알려주고, 어플리케이션에서 바로 조회할 수 있는 기능을 제공합니다."
+            android:textColor="@color/gray_500"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/btn_welcome_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_welcome_title" />
+
+
+        <TextView
+            android:id="@+id/btn_welcome_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_16"
+            android:backgroundTint="@color/blue_400"
+            android:fontFamily="@font/hsans_b"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="시작하기"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_welcome_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

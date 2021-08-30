@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.note11.schoolinfoapp.ui.screen.first.time.SetTimeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/txt_time_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hsans_b"
+                android:gravity="center"
+                android:text="시간 정보를 입력해주세요!"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="시간표 정보를 정확히 보여주기 위해 필요해요!\n입력 후, 완료하기 버튼을 눌러주세요:)"
+                android:textColor="@color/gray_500"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_time_help">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_time_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_time_class"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="수업 시간은 몇분인가요?"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_time_class"
+                    style="@style/DefaultEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/round_16_edit"
+                    android:elevation="2dp"
+                    android:hint="40"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="14dp"
+                    android:text="@={vm.classTime}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_time_class" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:text="분"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_time_class"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_time_class"
+                    app:layout_constraintTop_toTopOf="@+id/edt_time_class" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_time_rest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/txt_time_rest"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="쉬는 시간은 몇분인가요?"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_time_rest"
+                    style="@style/DefaultEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/round_16_edit"
+                    android:elevation="2dp"
+                    android:hint="10"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="14dp"
+                    android:text="@={vm.restTime}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_time_rest" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:text="분"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_time_rest"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_time_rest"
+                    app:layout_constraintTop_toTopOf="@+id/edt_time_rest" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_time_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/txt_time_first"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="1교시는 언제 시작하나요?"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_time_first_hour"
+                    style="@style/DefaultEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/round_16_edit"
+                    android:elevation="2dp"
+                    android:hint="8"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="14dp"
+                    android:text="@={vm.firstTimeHour}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/edt_time_first_minute"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_time_first" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:text="시"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_time_first_hour"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_time_first_hour"
+                    app:layout_constraintTop_toTopOf="@+id/edt_time_first_hour" />
+
+                <EditText
+                    android:id="@+id/edt_time_first_minute"
+                    style="@style/DefaultEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/round_16_edit"
+                    android:elevation="2dp"
+                    android:hint="40"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="14dp"
+                    android:text="@={vm.firstTimeMinute}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/edt_time_first_hour"
+                    app:layout_constraintTop_toBottomOf="@id/txt_time_first" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:text="분"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_time_first_minute"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_time_first_minute"
+                    app:layout_constraintTop_toTopOf="@+id/edt_time_first_minute" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_time_lunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/txt_time_lunch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="점심 시간은 언제인가요?"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_time_lunch"
+                    style="@style/DefaultEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/round_16_edit"
+                    android:elevation="2dp"
+                    android:hint="4"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="14dp"
+                    android:text="@={vm.classBeforeLunch}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_time_lunch" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:elevation="3dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:text="교시 후"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/edt_time_lunch"
+                    app:layout_constraintEnd_toEndOf="@+id/edt_time_lunch"
+                    app:layout_constraintTop_toTopOf="@+id/edt_time_lunch" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_time_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_500"
+            android:backgroundTint="@color/blue_500"
+            android:fontFamily="@font/hsans_b"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingVertical="20dp"
+            android:text="완료하기"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

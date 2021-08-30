@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/txt_select_help"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hsans_b"
+                android:gravity="center"
+                android:text="학년과 반을 선택해주세요!"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="학급 시간표를 조회하기 위해 필요해요!\n선택 후, 다음으로 버튼을 눌러주세요:)"
+                android:textColor="@color/gray_500"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/btn_select_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_select_help">
+
+            <Spinner
+                android:id="@+id/spn_select_grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/round_16"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp" />
+
+
+            <Spinner
+                android:id="@+id/spn_select_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/round_16"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_select_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_500"
+            android:backgroundTint="@color/blue_500"
+            android:fontFamily="@font/hsans_b"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingVertical="20dp"
+            android:text="다음으로"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,133 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.note11.schoolinfoapp.ui.screen.main.MainViewModel" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:id="@+id/progress_main_time"
+                android:layout_width="248dp"
+                android:layout_height="248dp"
+                android:layout_marginTop="40dp"
+                android:progress="@{viewModel.progress}"
+                app:donut_circle_starting_degree="-90"
+                app:donut_finished_color="@color/blue_400"
+                app:donut_finished_stroke_width="24dp"
+                app:donut_show_text="false"
+                app:donut_unfinished_color="@color/gray_200"
+                app:donut_unfinished_stroke_width="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/progress_main_time"
+                app:layout_constraintEnd_toEndOf="@+id/progress_main_time"
+                app:layout_constraintStart_toStartOf="@+id/progress_main_time"
+                app:layout_constraintTop_toTopOf="@+id/progress_main_time">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/hsans_l"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.period}"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:gravity="center"
+                    android:text="@{viewModel.className}"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/hsans_r"
+                    android:gravity="center"
+                    android:text="@{viewModel.nextPeriod}"
+                    android:textColor="@color/gray_500"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_main_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/progress_main_time">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="시간표 더보기"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_main_time"
+                    bindSubjectItems="@{viewModel.subjectList}"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    tools:listitem="@layout/item_subject" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/linear_main_time">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="28dp"
+                    android:fontFamily="@font/hsans_b"
+                    android:text="급식 메뉴"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_main_lunch"
+                    bindLunchItems="@{viewModel.lunchList}"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26dp"
+                    tools:listitem="@layout/item_lunch" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+</layout>
