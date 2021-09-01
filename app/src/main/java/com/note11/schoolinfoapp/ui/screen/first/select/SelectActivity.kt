@@ -34,7 +34,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
             spnSelectClass.adapter = classAdapter
 
             btnSelectNext.setOnClickListener {
-                // todo : Q6. 여기에 들어갈 함수로 적절한 것은?
+                // todo : Q6. 이곳에 들어갈 함수는?
                 nextStep()
             }
         }

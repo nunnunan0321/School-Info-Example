@@ -77,9 +77,10 @@
                 android:id="@+id/linear_main_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="56dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/progress_main_time">
+                app:layout_constraintTop_toBottomOf="@id/progress_main_time"
+                tools:layout_editor_absoluteX="0dp">
 
                 <TextView
                     android:layout_width="match_parent"

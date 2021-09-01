@@ -40,6 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.recyclerMainTime.let {
             //todo : Q11. 위 코드의 spanCount 숫자를 바꾸어보고, 숫자가 의미하는 것이 무엇일지 생각해봅시다.
             it.layoutManager = GridLayoutManager(this, 2)
+            //todo : Q11. 위 코드의 spanCount 숫자를 바꾸어보고, 숫자가 의미하는 것이 무엇일지 생각해봅시다.
             it.adapter = subjectAdapter
         }
 

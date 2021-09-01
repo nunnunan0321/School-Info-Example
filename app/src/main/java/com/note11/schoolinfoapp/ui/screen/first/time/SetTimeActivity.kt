@@ -35,7 +35,6 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
 
     private fun endToSetUp() = let { act ->
         val time = viewModel.getTimesByModel()
-
         // todo : Q10. 시간을 모두 입력하지 않았을 때, 토스트 메시지를 띄워주려 합니다. 어떤 코드가 들어가야할까요?
         if (time == null) Toast.makeText(act, "입력하지 않은 값이 존재해요", Toast.LENGTH_SHORT).show()
         else lifecycleScope.launch {

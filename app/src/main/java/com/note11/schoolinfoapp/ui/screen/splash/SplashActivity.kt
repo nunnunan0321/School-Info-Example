@@ -56,7 +56,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             it.putParcelableArrayListExtra("subjectList", subjectArrayList)
 
             lifecycleScope.launch {
-                // TODO: 2021-09-01 800ms 딜레이를 주고 MainActivity로 이동해주기
+                // todo : Q1. 800ms 딜레이를 주고 MainActivity로 이동해주기
                 delay(800)
                 startActivity(it)
                 finish()
