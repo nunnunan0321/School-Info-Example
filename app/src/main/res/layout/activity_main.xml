@@ -93,9 +93,9 @@
                     android:id="@+id/recycler_main_time"
                     bindSubjectItems="@{viewModel.subjectList}"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="8dp"
                     tools:listitem="@layout/item_subject" />
 
             </LinearLayout>
@@ -119,9 +119,9 @@
                     android:id="@+id/recycler_main_lunch"
                     bindLunchItems="@{viewModel.lunchList}"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="26dp"
+                    android:layout_marginTop="8dp"
                     tools:listitem="@layout/item_lunch" />
 
             </LinearLayout>

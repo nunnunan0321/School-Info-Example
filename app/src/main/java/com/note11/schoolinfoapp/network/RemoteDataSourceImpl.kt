@@ -43,45 +43,53 @@ object RemoteDataSourceImpl : RemoteDataSource {
         val (_, schoolCode, schoolKind, _, eduOfficeCode) = user.schoolInfo
         val (grade, classNum) = user.classInfo
 
-        val res = when (schoolKind) {
-            "고등학교" -> service.getHisTimeTable(
-                API_KEY,
-                schoolCode,
-                eduOfficeCode,
-                grade,
-                classNum,
-                today
-            )
-            "중학교" -> service.getMisTimeTable(
-                API_KEY,
-                schoolCode,
-                eduOfficeCode,
-                grade,
-                classNum,
-                today
-            )
-            "초등학교" -> service.getElsTimeTable(
-                API_KEY,
-                schoolCode,
-                eduOfficeCode,
-                grade,
-                classNum,
-                today
-            )
-
+        when (schoolKind) {
+            "고등학교" -> {
+                service.getHisTimeTable(
+                    API_KEY,
+                    schoolCode,
+                    eduOfficeCode,
+                    grade,
+                    classNum,
+                    today
+                ).also {
+                    return if (it.isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", it.toString())
+                        null
+                    } else it.body()?.timeTable?.get(1)?.get("row")
+                }
+            }
+            "중학교" -> {
+                service.getMisTimeTable(
+                    API_KEY,
+                    schoolCode,
+                    eduOfficeCode,
+                    grade,
+                    classNum,
+                    today
+                ).also {
+                    return if (it.isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", it.toString())
+                        null
+                    } else it.body()?.timeTable?.get(1)?.get("row")
+                }
+            }
+            "초등학교" -> {
+                service.getElsTimeTable(
+                    API_KEY,
+                    schoolCode,
+                    eduOfficeCode,
+                    grade,
+                    classNum,
+                    today
+                ).also {
+                    return if (it.isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", it.toString())
+                        null
+                    } else it.body()?.timeTable?.get(1)?.get("row")
+                }
+            }
             else -> return null
-        }
-
-        if (res.isSuccessful.not()) {
-            Log.e("getTimeTableRetrofit", res.toString())
-            return null
-        }
-
-        return when (schoolKind) {
-            "고등학교" -> (res as Response<HisTimeResponse>).body()?.timeTable?.get(1)?.get("row")
-            "중학교" -> (res as Response<MisTimeResponse>).body()?.timeTable?.get(1)?.get("row")
-            "초등학교" -> (res as Response<ElsTimeResponse>).body()?.timeTable?.get(1)?.get("row")
-            else -> null
         }
     }
 
@@ -98,6 +106,8 @@ object RemoteDataSourceImpl : RemoteDataSource {
             startDate,
             endDate
         )
+
+        Log.e("getClassInfoRetrofit", res.toString())
 
         if (res.isSuccessful.not()) {
             Log.e("getClassInfoRetrofit", res.toString())

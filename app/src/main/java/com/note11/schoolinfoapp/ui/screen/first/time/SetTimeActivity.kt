@@ -11,6 +11,7 @@ import com.note11.schoolinfoapp.data.UserModel
 import com.note11.schoolinfoapp.databinding.ActivitySetTimeBinding
 import com.note11.schoolinfoapp.ui.base.BaseActivity
 import com.note11.schoolinfoapp.ui.screen.main.MainActivity
+import com.note11.schoolinfoapp.ui.screen.splash.SplashActivity
 import com.note11.schoolinfoapp.util.DataUtil
 import kotlinx.coroutines.launch
 
@@ -39,7 +40,7 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
                 setUserInfo(receivedInfo)
                 setTimeInfo(time)
             }
-            startActivity(Intent(act, MainActivity::class.java))
+            startActivity(Intent(act, SplashActivity::class.java))
             ActivityCompat.finishAffinity(act)
         }
     }
