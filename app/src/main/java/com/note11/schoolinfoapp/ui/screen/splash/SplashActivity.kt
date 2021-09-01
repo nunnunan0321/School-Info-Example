@@ -35,11 +35,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun loadData() = lifecycleScope.launch {
-        val user = DataUtil(this@SplashActivity).getUserInfoOnce()
+        val user = DataUtil(this@SplashActivity).getUserInfoOnce() //유저 정보를 가져온다.
 
-        if (user != null) {
+        if (user != null) { //있다면 -> 이전에 데이터를 저장 했다면 메인 액티비티로
             viewModel.getAllData(user)
-        } else {
+        } else { // 없다면 -> 처음 접속한다면 웰컴으로
             startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
             this@SplashActivity.finish()
         }
@@ -56,6 +56,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             it.putParcelableArrayListExtra("subjectList", subjectArrayList)
 
             lifecycleScope.launch {
+                // TODO: 2021-09-01 800ms 딜레이를 주고 MainActivity로 이동해주기
                 delay(800)
                 startActivity(it)
                 finish()
