@@ -29,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         viewModel.setNowPeriod(3, 7)
 
+        //todo : Q.18 initActivity() 함수를 실행한다.
         initActivity()
 
     }
@@ -38,15 +39,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         val lunchAdapter = LunchAdapter()
 
         binding.recyclerMainTime.let {
-            //todo : Q11. 위 코드의 spanCount 숫자를 바꾸어보고, 숫자가 의미하는 것이 무엇일지 생각해봅시다.
+            //todo : Q19. 위 코드의 spanCount 숫자를 바꾸어보고, 숫자가 의미하는 것이 무엇일지 생각해봅시다.
             it.layoutManager = GridLayoutManager(this, 2)
-            //todo : Q11. 위 코드의 spanCount 숫자를 바꾸어보고, 숫자가 의미하는 것이 무엇일지 생각해봅시다.
             it.adapter = subjectAdapter
         }
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        //todo : Q12. 위 코드의 HORIZONTAL 을 VERTICAL 로 바꾸면 어떻게 될까요?
+        //todo : Q120. 위 코드의 HORIZONTAL 을 VERTICAL 로 바꾸면 어떻게 될까요?
         // 한 번 예상해보고 코드를 바꿔 실행해 봅시다.
         binding.recyclerMainLunch.let {
             it.layoutManager = layoutManager

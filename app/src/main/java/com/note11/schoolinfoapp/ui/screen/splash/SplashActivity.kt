@@ -27,9 +27,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //todo : Q1. loadDAta() 함수를 실행한다.
         loadData()
 
         viewModel.load.observe(this, {
+            // todo : Q2. it이 2라면 gotoMain 함수를 실행해주는데
+            //  이때 viewModel.subjectList, viewModel.lunchList를 인수로 받는다.
             if (it == 2) goToMain(viewModel.subjectList, viewModel.lunchList)
         })
     }
@@ -40,6 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         if (user != null) { //있다면 -> 이전에 데이터를 저장 했다면 메인 액티비티로
             viewModel.getAllData(user)
         } else { // 없다면 -> 처음 접속한다면 웰컴으로
+            // TODO: Q.3  WelcomeActivity으로 이동해줍니다.
             startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
             this@SplashActivity.finish()
         }
@@ -56,7 +60,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             it.putParcelableArrayListExtra("subjectList", subjectArrayList)
 
             lifecycleScope.launch {
-                // todo : Q1. 800ms 딜레이를 주고 MainActivity로 이동해주기
+                // todo : Q4. 800ms 딜레이를 주고 MainActivity로 이동해주기
+                //  이때 800ms가 0.8초라는거 설명해주기
                 delay(800)
                 startActivity(it)
                 finish()

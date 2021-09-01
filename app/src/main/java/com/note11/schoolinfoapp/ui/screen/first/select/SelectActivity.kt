@@ -34,7 +34,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
             spnSelectClass.adapter = classAdapter
 
             btnSelectNext.setOnClickListener {
-                // todo : Q6. 이곳에 들어갈 함수는?
+                // todo : Q9. nextStep() 함수를 실행해줍니다.
                 nextStep()
             }
         }
@@ -49,14 +49,16 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         val grade = (binding.spnSelectGrade.selectedItem as String).replace("학년", "")
         val classNum = (binding.spnSelectClass.selectedItem as String).replace("반", "")
 
-        //todo : Q7. 학년을 선택하지 않았거나, 반을 선택하지 않았을 때 다음 코드를 실행하려합니다. 아래 들어갈 코드는 무엇일까요?
+        //todo : Q10. 학년을 선택하지 않았거나, 반을 선택하지 않았을 때 다음 코드를 실행하려합니다. 아래 들어갈 코드는 무엇일까요?
         if (grade.isEmpty() || classNum.isEmpty()) {
             Toast.makeText(this, "입력하지 않은 정보가 있어요", Toast.LENGTH_SHORT).show()
             return
         }
 
+        //todo : Q11. UserModel 객체인 infu를 만들어 줍니다.
         val info = UserModel(receivedInfo, ClassModel(grade, classNum))
 
+        //todo : Q12. SetTimeActivity로 이동해주고 이때 info를 전달해줍니다.
         val intent = Intent(this, SetTimeActivity::class.java).putExtra("userInfo", info)
         startActivity(intent)
     }
