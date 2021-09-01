@@ -28,6 +28,7 @@ class SplashActivity : AppCompatActivity() {
         val user = DataUtil(this@SplashActivity).getUserInfoOnce()
 
         if (user != null) {
+            //todo : Q1. 1500ms 딜레이를 주고, MainActivity 로 화면을 전환해 줍시다.
             delay(1500)
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         } else {
