@@ -28,19 +28,26 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // todo : Q2. 조건으로 it을 받고 gotoMain 함수를 실행해주는데
+        //  이때 viewModel.subjectList, viewModel.lunchList를 인수로 받는다.
         viewModel.loaded.observe(this, {
             if (it) goToMain(viewModel.subjectList, viewModel.lunchList)
         })
 
+        //todo : Q1. loadDAta() 함수를 실행한다.
         loadData()
     }
 
     private fun loadData() = lifecycleScope.launch {
         val user = DataUtil(this@SplashActivity).getUserInfoOnce()
 
+
+
+
         if (user != null) {
             viewModel.getAllData(user)
         } else {
+            // todo: Q3.  WelcomeActivity으로 이동해줍니다.
             startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
             this@SplashActivity.finish()
         }
@@ -57,6 +64,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
             lifecycleScope.launch {
                 it.putExtra("storedTimeInfo", DataUtil(applicationContext).getTimeInfoOnce())
+
+                // todo : Q4. 800ms 딜레이를 주고 MainActivity로 이동해주기
+                //  이때 800ms가 0.8초라는거 설명해주기
                 delay(800)
                 startActivity(it)
                 finish()
