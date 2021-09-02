@@ -65,8 +65,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         // 한 번 예상해보고 코드를 바꿔 실행해 봅시다.
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
-
-
         binding.recyclerMainLunch.let {
             it.layoutManager = layoutManager
             it.adapter = lunchAdapter

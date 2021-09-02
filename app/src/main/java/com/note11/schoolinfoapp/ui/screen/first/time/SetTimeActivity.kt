@@ -34,7 +34,6 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
                 viewModel.lunchEndPeriod.value = "${it.toInt() + 1}교시는 언제 시작하나요?"
             }
         })
-
         //todo : Q14. id가 btn_time_next 인 버튼을 눌렀을 때 endToSetUp 함수를 실행해주려 합니다.
         binding.btnTimeNext.setOnClickListener { endToSetUp() }
     }
@@ -52,9 +51,16 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
                 setTimeInfo(time)
             }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 98ba5340881c7591569361d4bd9cf2a25d10cc06
             //todo : Q.17 SplashActivity로 이동한다.
             startActivity(Intent(act, SplashActivity::class.java))
             ActivityCompat.finishAffinity(act)
         }
+
+
+        //안녕하세요 저는 setTimeActivity어ㅏ MainActivity를 설명할 바키찬 입니다.
     }
 }

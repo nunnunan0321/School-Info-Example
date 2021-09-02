@@ -18,6 +18,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>(R.layout.activity_w
         super.onCreate(savedInstanceState)
 
         //todo : Q5. btn_welcome_start 를 눌렀을 때 SearchActivity 로 이동하게 해줍시다.
+
         binding.btnWelcomeStart.setOnClickListener {
             startActivity(Intent(this, SearchActivity::class.java))
         }

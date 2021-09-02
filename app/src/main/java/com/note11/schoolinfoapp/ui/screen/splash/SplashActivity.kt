@@ -32,6 +32,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         //  이때 viewModel.subjectList, viewModel.lunchList를 인수로 받는다.
         viewModel.loaded.observe(this, {
             if (it) goToMain(viewModel.subjectList, viewModel.lunchList)
+
         })
 
         //todo : Q1. loadDAta() 함수를 실행한다.
@@ -39,8 +40,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun loadData() = lifecycleScope.launch {
-        val user = DataUtil(this@SplashActivity).getUserInfoOnce()
-
+        val user = DataUtil(this@SplashActivity).getUserInfoOnce() //유저 정보를 가져온다.
 
 
 
@@ -63,6 +63,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             it.putParcelableArrayListExtra("subjectList", subjectArrayList)
 
             lifecycleScope.launch {
+
                 it.putExtra("storedTimeInfo", DataUtil(applicationContext).getTimeInfoOnce())
 
                 // todo : Q4. 800ms 딜레이를 주고 MainActivity로 이동해주기

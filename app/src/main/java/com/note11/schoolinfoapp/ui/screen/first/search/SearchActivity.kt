@@ -19,7 +19,6 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
 
-
         //todo : Q6. initRecyclerView 함수를 호출하는 코드를 작성해주세요.
         initRecyclerView()
 
@@ -37,7 +36,10 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
 
     private fun goNextStep(info: SchoolModel) {
         //todo: Q8. info를 전달해주면서 SelectActivity 로 화면을 전환 시켜주려 합니다. 어떻게 해야할까요?
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98ba5340881c7591569361d4bd9cf2a25d10cc06
         val intent = Intent(this, SelectActivity::class.java)
         intent.putExtra("schoolInfo", info)
         startActivity(intent)

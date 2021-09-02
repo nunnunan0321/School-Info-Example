@@ -58,7 +58,6 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         //todo : Q11. UserModel 객체인 infu를 만들어 줍니다.
         val info = UserModel(receivedInfo, ClassModel(grade, classNum))
 
-
         //todo : Q12. SetTimeActivity로 이동해주고 이때 info를 전달해줍니다.
         val intent = Intent(this, SetTimeActivity::class.java).putExtra("userInfo", info)
         startActivity(intent)
