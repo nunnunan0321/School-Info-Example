@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hsans_b"
                 android:gravity="center"
-                android:text="학년과 반을 선택해주세요!"
+                android:text="@string/select_title"
                 android:textSize="20sp" />
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:gravity="center"
-                android:text="학급 시간표를 조회하기 위해 필요해요!\n선택 후, 다음으로 버튼을 눌러주세요:)"
+                android:text="@string/select_help"
                 android:textColor="@color/gray_500"
                 android:textSize="12sp" />
 
@@ -81,7 +81,7 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center"
             android:paddingVertical="20dp"
-            android:text="다음으로"
+            android:text="@string/select_next_btn"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

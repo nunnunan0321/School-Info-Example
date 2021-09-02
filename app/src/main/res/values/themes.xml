@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Theme.SchoolInfoApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_400</item>
         <item name="colorPrimaryVariant">@color/blue_500</item>

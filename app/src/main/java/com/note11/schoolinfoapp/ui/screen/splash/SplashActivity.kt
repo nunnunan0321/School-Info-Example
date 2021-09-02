@@ -19,6 +19,7 @@ import com.note11.schoolinfoapp.util.DataUtil
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.system.measureTimeMillis
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
@@ -27,11 +28,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadData()
-
-        viewModel.load.observe(this, {
-            if (it == 2) goToMain(viewModel.subjectList, viewModel.lunchList)
+        viewModel.loaded.observe(this, {
+            if (it) goToMain(viewModel.subjectList, viewModel.lunchList)
         })
+
+        loadData()
     }
 
     private fun loadData() = lifecycleScope.launch {
@@ -46,9 +47,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun goToMain(subjectList: List<SubjectModel>?, lunchList: List<LunchModel>?) {
-        val lunchArrayList = arrayListOf<LunchModel>()
+        val lunchArrayList = lunchListProcessing(lunchList)
         val subjectArrayList = arrayListOf<SubjectModel>()
-        lunchList?.let { lunchArrayList.addAll(it) }
         subjectList?.let { subjectArrayList.addAll(it) }
 
         Intent(this, MainActivity::class.java).also {
@@ -56,11 +56,33 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             it.putParcelableArrayListExtra("subjectList", subjectArrayList)
 
             lifecycleScope.launch {
+                it.putExtra("storedTimeInfo", DataUtil(applicationContext).getTimeInfoOnce())
                 delay(800)
                 startActivity(it)
                 finish()
             }
         }
+    }
+
+    private fun lunchListProcessing(list: List<LunchModel>?): ArrayList<LunchModel> {
+        val newList = arrayListOf<LunchModel>()
+
+        if (list == null) return newList
+
+        for (i in list.indices) if (list[i].mealCode == "2") {
+            val item = list[i]
+            val regex1 = Regex("""[\d.]""")
+            val regex2 = Regex("""<br/>""")
+            var newMenuText = item.menu
+
+            newMenuText = regex1.replace(newMenuText, "")
+            newMenuText = regex2.replace(newMenuText, "\n")
+
+            item.menu = newMenuText
+            newList.add(item)
+        }
+
+        return newList
     }
 
 }

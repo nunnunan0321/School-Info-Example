@@ -28,6 +28,12 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
         receivedInfo = intent.getParcelableExtra("userInfo")!!
         binding.vm = viewModel
 
+        viewModel.classBeforeLunch.observe(this, {
+            if (it.toIntOrNull() != null) {
+                viewModel.lunchEndPeriod.value = "${it.toInt() + 1}교시는 언제 시작하나요?"
+            }
+        })
+
         binding.btnTimeNext.setOnClickListener { endToSetUp() }
     }
 

@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="28dp"
                     android:fontFamily="@font/hsans_b"
-                    android:text="시간표 더보기"
+                    android:text="@string/main_time_table_title"
                     android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -96,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="8dp"
+                    android:overScrollMode="never"
                     tools:listitem="@layout/item_subject" />
 
             </LinearLayout>
@@ -103,8 +104,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginVertical="12dp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_main_time">
 
                 <TextView
@@ -112,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="28dp"
                     android:fontFamily="@font/hsans_b"
-                    android:text="급식 메뉴"
+                    android:text="@string/main_lunch_title"
                     android:textSize="14sp" />
 
                 <androidx.recyclerview.widget.RecyclerView

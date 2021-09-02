@@ -9,32 +9,32 @@ import java.util.*
 
 object RemoteDataSourceImpl : RemoteDataSource {
     override suspend fun getSearchList(searchString: String): List<SchoolModel>? {
-        val res = RetrofitUtil.schoolService.getSchoolInfo(
+        RetrofitUtil.schoolService.getSchoolInfo(
             apiKey = API_KEY,
             schoolName = searchString
-        )
+        ).run {
+            if (isSuccessful.not()) {
+                Log.e("getSearchInfoRetrofit", toString())
+                return null
+            }
 
-        if (res.isSuccessful.not()) {
-            Log.e("getClassInfoRetrofit", res.toString())
-            return null
+            return body()?.schoolInfo?.get(1)?.get("row")
         }
-
-        return res.body()?.schoolInfo?.get(1)?.get("row")
     }
 
     override suspend fun getClassInfo(schoolInfo: SchoolModel): List<ClassModel>? {
-        val res = RetrofitUtil.classService.getClassInfo(
+        RetrofitUtil.classService.getClassInfo(
             apiKey = API_KEY,
             officeCode = schoolInfo.eduOfficeCode,
             schoolCode = schoolInfo.schoolCode
-        )
+        ).run {
+            if (isSuccessful.not()) {
+                Log.e("getClassInfoRetrofit", toString())
+                return null
+            }
 
-        if (res.isSuccessful.not()) {
-            Log.e("getClassInfoRetrofit", res.toString())
-            return null
+            return body()?.classInfo?.get(1)?.get("row")
         }
-
-        return res.body()?.classInfo?.get(1)?.get("row")
     }
 
     override suspend fun getTimeTable(user: UserModel, date: Calendar): List<SubjectModel>? {
@@ -52,11 +52,11 @@ object RemoteDataSourceImpl : RemoteDataSource {
                     grade,
                     classNum,
                     today
-                ).also {
-                    return if (it.isSuccessful.not()) {
-                        Log.e("getTimeTableRetrofit", it.toString())
+                ).run {
+                    return if (isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", toString())
                         null
-                    } else it.body()?.timeTable?.get(1)?.get("row")
+                    } else body()?.timeTable?.get(1)?.get("row")
                 }
             }
             "중학교" -> {
@@ -67,11 +67,11 @@ object RemoteDataSourceImpl : RemoteDataSource {
                     grade,
                     classNum,
                     today
-                ).also {
-                    return if (it.isSuccessful.not()) {
-                        Log.e("getTimeTableRetrofit", it.toString())
+                ).run {
+                    return if (isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", toString())
                         null
-                    } else it.body()?.timeTable?.get(1)?.get("row")
+                    } else body()?.timeTable?.get(1)?.get("row")
                 }
             }
             "초등학교" -> {
@@ -82,11 +82,11 @@ object RemoteDataSourceImpl : RemoteDataSource {
                     grade,
                     classNum,
                     today
-                ).also {
-                    return if (it.isSuccessful.not()) {
-                        Log.e("getTimeTableRetrofit", it.toString())
+                ).run {
+                    return if (isSuccessful.not()) {
+                        Log.e("getTimeTableRetrofit", toString())
                         null
-                    } else it.body()?.timeTable?.get(1)?.get("row")
+                    } else body()?.timeTable?.get(1)?.get("row")
                 }
             }
             else -> return null
@@ -99,22 +99,20 @@ object RemoteDataSourceImpl : RemoteDataSource {
         endDate: String
     ): List<LunchModel>? {
 
-        val res = RetrofitUtil.lunchService.getLunch(
+        RetrofitUtil.lunchService.getLunch(
             API_KEY,
             schoolInfo.schoolCode,
             schoolInfo.eduOfficeCode,
             startDate,
             endDate
-        )
+        ).run {
+            if (isSuccessful.not()) {
+                Log.e("getClassInfoRetrofit", toString())
+                return null
+            }
 
-        Log.e("getClassInfoRetrofit", res.toString())
-
-        if (res.isSuccessful.not()) {
-            Log.e("getClassInfoRetrofit", res.toString())
-            return null
+            return body()?.lunch?.get(1)?.get("row")
         }
-
-        return res.body()?.lunch?.get(1)?.get("row")
     }
 
     private const val API_KEY = "f5f2f940e4d64f99bf12b9477e02d01a"

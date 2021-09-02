@@ -9,30 +9,27 @@ import com.note11.schoolinfoapp.data.SubjectModel
 import com.note11.schoolinfoapp.data.UserModel
 import com.note11.schoolinfoapp.network.lunch.LunchManager
 import com.note11.schoolinfoapp.network.time.TimeManager
+import com.note11.schoolinfoapp.util.DataUtil
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.system.measureTimeMillis
 
 class SplashViewModel : ViewModel() {
     var subjectList: List<SubjectModel>? = null
     var lunchList: List<LunchModel>? = null
-    val load = MutableLiveData(0)
+    val loaded = MutableLiveData(false)
 
-    fun getAllData(user: UserModel) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                subjectList = TimeManager.getTimeTable(user)
-                load.postValue(load.value!!.plus(1))
-            } catch (e: Exception) {
-                Log.e("getAllData", e.toString())
-            }
-        }
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                lunchList = LunchManager.getLunch(user.schoolInfo)
-                load.postValue(load.value!!.plus(1))
-            } catch (e: Exception) {
-                Log.e("getAllData", e.toString())
-            }
+    fun getAllData(user: UserModel) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val subjects = async { TimeManager.getTimeTable(user) }
+            val lunches = async { LunchManager.getLunch(user.schoolInfo) }
+            subjectList = subjects.await()
+            lunchList = lunches.await()
+            loaded.postValue(true)
+        } catch (e: Exception) {
+            Log.e("getAllData", e.toString())
         }
     }
 }
