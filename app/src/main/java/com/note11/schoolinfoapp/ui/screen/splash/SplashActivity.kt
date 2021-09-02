@@ -43,7 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         if (user != null) { //있다면 -> 이전에 데이터를 저장 했다면 메인 액티비티로
             viewModel.getAllData(user)
         } else { // 없다면 -> 처음 접속한다면 웰컴으로
-            // TODO: Q.3  WelcomeActivity으로 이동해줍니다.
+            // TODO: Q.3  WelcomeActivity로 이동해줍니다.
             startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
             this@SplashActivity.finish()
         }
